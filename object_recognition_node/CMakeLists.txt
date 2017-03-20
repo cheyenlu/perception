@@ -12,6 +12,7 @@ set(ROS_BUILD_TYPE Release)
 # set(ROS_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS "-std=c++11")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+#set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O1")
 
 find_package(catkin REQUIRED COMPONENTS roscpp sensor_msgs perception_utils
   keyboard tf tf_conversions sbpl_perception)

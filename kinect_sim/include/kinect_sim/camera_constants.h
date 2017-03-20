@@ -1,6 +1,8 @@
 #pragma once
 
 // Parameters for MS Kinect V1.0
+//const int kCameraWidth = 512;
+//const int kCameraHeight = 424;
 const int kCameraWidth = 640;
 const int kCameraHeight = 480;
 const float kCameraFX = 576.09757860f;

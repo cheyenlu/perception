@@ -17,18 +17,23 @@ using std::vector;
 using std::string;
 using namespace sbpl_perception;
 
+#define MIN_X -1.5
+#define MAX_X 1.5
+#define MIN_Y -1.5
+#define MAX_Y 1.5
+
 int main(int argc, char **argv) {
   ros::init(argc, argv, "object_localizer_client_node");
   // The camera pose and preprocessed point cloud, both in world frame.
   Eigen::Isometry3d camera_pose;
   camera_pose.matrix() <<
-                       0.00974155,   0.997398, -0.0714239,  -0.031793,
-                                     -0.749216,  -0.040025,  -0.661116,   0.743224,
-                                     -0.662254,  0.0599522,   0.746877,   0.878005,
-                                     0,          0,          0,          1;
+                       -0.0462167, -0.089684, -0.994897, 0.085115,
+                        0.0351477, -0.995491, 0.0881048, 0.0635849,
+                       -0.998313, -0.0308964,  0.0491605,   0.834256,
+                                0,           0,          0,         1;
 
   const string demo_pcd_file = ros::package::getPath("sbpl_perception") +
-                               "/demo/demo_pointcloud.pcd";
+                               "/demo/2017test/apc2017.pcd";
   // Objects for storing the point clouds.
   pcl::PointCloud<PointT>::Ptr cloud_in(new PointCloud);
 
@@ -44,12 +49,14 @@ int main(int argc, char **argv) {
     nh.serviceClient<object_recognition_node::LocalizeObjects>("object_localizer_service");
   object_recognition_node::LocalizeObjects srv;
   auto &req = srv.request;
-  req.x_min = -0.179464;
-  req.x_max = 0.141014;
-  req.y_min = -0.397647;
-  req.y_max = 0.0103991;
+  req.x_min = MIN_X;
+  req.x_max = MAX_X;
+  req.y_min = MIN_Y;
+  req.y_max = MAX_Y;
   req.support_surface_height = 0.0;
-  req.object_ids = vector<string>({"tilex_spray", "tide", "glass_7"});
+  req.object_ids = vector<string>({"expo_dry_erase_board_eraser"});
+  //req.object_ids = vector<string>({"poland_spring_water"});
+  //req.object_ids = vector<string>({"duct_tape"});
   tf::matrixEigenToMsg(camera_pose.matrix(), req.camera_pose);
   pcl::toROSMsg(*cloud_in, req.input_organized_cloud);
 

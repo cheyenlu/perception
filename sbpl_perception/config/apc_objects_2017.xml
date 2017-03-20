@@ -1,0 +1,23 @@
+<launch>
+  <rosparam param="model_bank" subst_value="True">
+
+    [
+    <!--Format-->
+    <!--
+      [name,
+      file_descriptor,
+      flipped (up-side down in the images wrt to the model),
+      symmetric (rotationally symmetric about Z-axis)]  
+      -->
+    [   
+        expo_dry_erase_board_eraser,
+        $(find sbpl_perception)/data/apc_models/expo_dry_erase_board_eraser1.stl,
+        false,
+        false,
+        1,
+        0.04,
+        1
+    ]
+    ]
+  </rosparam>
+</launch>
