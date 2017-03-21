@@ -5,7 +5,7 @@ todo.txt
 BUGS.txt
 bugs.txt
 *.bag
-*.pcd
+#*.pcd
 *.png
 *.jpg
 *.jpeg

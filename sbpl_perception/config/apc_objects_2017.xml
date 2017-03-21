@@ -17,6 +17,24 @@
         1,
         0.04,
         1
+    ],
+    [   
+        duct_tape,
+        $(find sbpl_perception)/data/apc_models/Duct_Tape2.stl,
+        false,
+        false,
+        1,
+        0.04,
+        1
+    ],
+    [   
+        hand_weight,
+        $(find sbpl_perception)/data/apc_models/Hand_Weight1.stl,
+        false,
+        false,
+        1,
+        0.04,
+        1
     ]
     ]
   </rosparam>

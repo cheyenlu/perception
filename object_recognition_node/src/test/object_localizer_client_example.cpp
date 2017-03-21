@@ -54,9 +54,10 @@ int main(int argc, char **argv) {
   req.y_min = MIN_Y;
   req.y_max = MAX_Y;
   req.support_surface_height = 0.0;
-  req.object_ids = vector<string>({"expo_dry_erase_board_eraser"});
+  //req.object_ids = vector<string>({"expo_dry_erase_board_eraser"});
   //req.object_ids = vector<string>({"poland_spring_water"});
   //req.object_ids = vector<string>({"duct_tape"});
+  req.object_ids = vector<string>({"hand_weight"});
   tf::matrixEigenToMsg(camera_pose.matrix(), req.camera_pose);
   pcl::toROSMsg(*cloud_in, req.input_organized_cloud);
 
